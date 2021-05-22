@@ -1,0 +1,13 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'env.example', '.env']
+
+- name: 'bash'
+  args: ['./gen-password.sh']
+
+- name: 'bash'
+  args: ['echo', 'Starting docker compose up...'] 
+
+- name: 'docker/compose:1.19.0'
+  args: [‘up’, ‘-d’]
